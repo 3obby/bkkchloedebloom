@@ -6,11 +6,12 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    extend: {},
+  },
+  variants: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+      fill: ['hover', 'focus'],
+      backdropBlur: ['responsive'],
     },
   },
   plugins: [],
