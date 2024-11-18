@@ -53,88 +53,73 @@ export default function ProductGroup({ title, image }) {
     ],
   };
 
+  // Define images for each product group
+  const groupImages = {
+    'Birthday': ['/images/birthday1.jpg', '/images/birthday2.jpg'],
+    'Romance': ['/images/romance1.jpg', '/images/romance2.jpg'],
+    'Wedding': ['/images/wedding1.jpg', '/images/wedding2.jpg'],
+    'Corporate': ['/images/corporate1.jpg', '/images/corporate2.jpg'],
+    'Colors': ['/images/colors1.jpg', '/images/colors2.jpg'],
+  };
+
   return (
-    <>
-      <div
-        className="product-group max-w-[270px] min-w-[200px] w-full mx-auto relative cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
-        onClick={handleClick}
-      >
-        <div className="relative w-full h-full">
-          <div className="absolute inset-0 flex items-center justify-center px-5">
-            {translations[title] ? (
-              <div className="text-center">
-                {translations[title].map((item, index) => (
-                  <h2 key={index} className="text-3xl font-bold text-white stroke-text mb-1">
-                    {item.text}
-                  </h2>
-                ))}
-              </div>
-            ) : (
-              <h2 className="text-3xl font-bold text-white stroke-text text-center px-5">
-                {title}
-              </h2>
-            )}
-          </div>
-          <Image
-            src={image}
-            alt={title}
-            layout="responsive"
-            width={300}
-            height={300}
-            className="object-cover"
-          />
+    <div className="cursor-pointer">
+      <div className="relative w-72 h-72" onClick={handleClick}>
+        {/* Background Image with increased opacity */}
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="rounded-lg opacity-90 object-cover"
+        />
+
+        {/* Text Content overlaid */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <h2 className="text-2xl font-bold text-white">{title}</h2>
         </div>
       </div>
 
+      {/* Modal with glass-like background */}
       {showModal && (
         <div
-          className="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          className="modal-overlay fixed inset-0 bg-white bg-opacity-30 backdrop-blur-md flex items-center justify-center z-50"
           onClick={handleClose}
         >
           <div
-            className="modal-content relative bg-white bg-opacity-20 backdrop-blur-lg p-6 max-w-3xl max-h-[80vh] overflow-auto rounded-2xl m-10"
+            className="modal-content bg-white bg-opacity-80 backdrop-blur-md p-6 rounded-lg relative max-w-3xl w-full mx-4"
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="absolute top-2 right-2 text-white hover:text-gray-200 text-2xl"
+              className="close-button absolute top-2 right-2 text-gray-500 hover:text-gray-700"
               onClick={handleClose}
             >
-              ✕
+              ✖
             </button>
-            <h3 className="text-2xl font-bold mb-4">{title} Gallery</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              <Image
-                src={image}
-                alt={title}
-                width={300}
-                height={300}
-                className="rounded-lg"
-              />
-              <Image
-                src={image}
-                alt={title}
-                width={300}
-                height={300}
-                className="rounded-lg"
-              />
-              <Image
-                src={image}
-                alt={title}
-                width={300}
-                height={300}
-                className="rounded-lg"
-              />
-              <Image
-                src={image}
-                alt={title}
-                width={300}
-                height={300}
-                className="rounded-lg"
-              />
+            <h2 className="text-xl font-bold mb-4">{title}</h2>
+            {/* Display parent photos */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {groupImages[title]?.map((imgSrc, index) => (
+                <div key={index} className="relative w-full h-48">
+                  <Image
+                    src={imgSrc}
+                    alt={`${title} image ${index + 1}`}
+                    fill
+                    className="object-cover rounded-lg"
+                  />
+                </div>
+              ))}
             </div>
+            {/* Translations */}
+            <ul className="mt-4">
+              {translations[title]?.map(({ lang, text }) => (
+                <li key={lang}>
+                  <strong>{lang}:</strong> {text}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 } 

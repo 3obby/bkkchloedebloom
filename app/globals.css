@@ -89,15 +89,6 @@ footer.border-custom::after {
   display: none;
 }
 
-/* Optional custom styles if needed */
-.product-group {
-  /* Additional styles if required */
-}
-
-.modal-overlay {
-  /* Styles applied via Tailwind CSS classes */
-}
-
 .modal-content {
   /* Styles applied via Tailwind CSS classes */
   border-radius: 0.5rem; /* Rounded corners */
@@ -153,16 +144,6 @@ svg {
   @apply fill-current;
 }
 
-/* Left Border */
-.border-left {
-  /* Adjust if necessary */
-}
-
-/* Right Border */
-.border-right {
-  /* Adjust if necessary */
-}
-
 /* Ensure borders span the full height */
 .border-left,
 .border-right {
@@ -175,3 +156,17 @@ svg {
     transparent 16px
   );
 }
+
+/* Remove or comment out existing modal styles if they conflict with Tailwind classes */
+
+/* .modal-overlay {
+  // Existing styles (if any)
+}
+
+.modal-content {
+  // Existing styles (if any)
+}
+
+.close-button {
+  // Existing styles (if any)
+} */
