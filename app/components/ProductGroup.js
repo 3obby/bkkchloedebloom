@@ -64,18 +64,20 @@ export default function ProductGroup({ title, image }) {
 
   return (
     <div className="cursor-pointer">
-      <div className="relative w-72 h-72" onClick={handleClick}>
+      <div className="relative" onClick={handleClick}>
         {/* Background Image with increased opacity */}
         <Image
           src={image}
           alt={title}
-          fill
+          layout="responsive"
+          width={1}
+          height={1}
           className="rounded-lg opacity-90 object-cover"
         />
 
         {/* Text Content overlaid */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <h2 className="text-2xl font-bold text-white">{title}</h2>
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white">{title}</h2>
         </div>
       </div>
 

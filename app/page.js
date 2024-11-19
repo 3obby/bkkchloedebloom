@@ -99,15 +99,28 @@ export default function Home() {
         <div className="border-right"></div>
 
         {/* Centering Wrapper */}
-        <div className="flex items-center justify-center h-full">
-          {/* Product Groups */}
-          <div className="grid gap-8 py-5 grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))]">
-            <ProductGroup title="Birthday" image="/pgbirthday.png" />
-            <ProductGroup title="Romance" image="/pgromance.png" />
-            <ProductGroup title="Wedding" image="/pgwedding.png" />
-            <ProductGroup title="Corporate" image="/pgcorporate.png" />
-            <ProductGroup title="Colors" image="/pgcolors.png" />
+        <div className="flex flex-col items-center justify-center h-full">
+          {/* Info */}
+          <div className="flex flex-col items-center justify-center pt-10">
+            <p className="text-lg">Delivery + Pickup in Bangkok :)</p>
+            <p className="text-lg">จัดส่ง / รับสินค้าในกรุงเทพฯ</p>
           </div>
+
+              {/* Start Order Button */}
+              <button className="px-5 py-5 my-14 bg-pink-700 text-white rounded-lg outline-white outline-4 outline-offset-2">
+            Start Order 👍
+          </button>
+
+          {/* Product Groups */}
+          <div className="grid gap-5 py-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <ProductGroup title="Birthday" image="/pgbirthdaybw2.png" />
+            <ProductGroup title="Romance" image="/pgromancebw2.png" />
+            <ProductGroup title="Wedding" image="/weddingbw2.png" />
+            <ProductGroup title="Corporate" image="/pgcorporatebw2.png" />
+            <ProductGroup title="Colors" image="/colorsbw2.png" />
+          </div>
+
+      
         </div>
       </main>
 
