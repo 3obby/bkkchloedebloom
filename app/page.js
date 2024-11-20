@@ -1,13 +1,21 @@
+'use client';
+
+import { useState } from 'react';
 import Image from "next/image";
-import ProductGroup from "./components/ProductGroup";
+import ProductCarousel from './components/ProductCarousel';
+import StartOrderModal from './components/StartOrderModal';
 
 export default function Home() {
   // Define icon sizes outside of the return statement
   const iconSize = 50; // Icon size in pixels
   const cartIconSize = 40; // Cart icon size in pixels
 
+  // Add state to manage the modal's visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col mx-10">
+
       {/* Navigation Bar */}
       <nav className="relative px-5 sm:px-10 py-5 flex items-center border-custom">
         {/* Left and Right Borders */}
@@ -29,7 +37,7 @@ export default function Home() {
         <div className="flex-grow"></div>
 
         {/* Social Media Icons and Cart Icon */}
-        <div className="flex items-center space-x-1">
+        <div className="flex items-center space-x-1 xs:space-x-0">
           {/* Line Link */}
           <a
             href="https://line.me/ti/p/your-line-id"
@@ -42,7 +50,7 @@ export default function Home() {
               alt="Line"
               width={iconSize}
               height={iconSize}
-              className="px-2"
+              className="px-2 xs:px-1"
             />
           </a>
 
@@ -58,7 +66,7 @@ export default function Home() {
               alt="Instagram"
               width={iconSize}
               height={iconSize}
-              className="px-2"
+              className="px-2 xs:px-1"
             />
           </a>
 
@@ -74,21 +82,11 @@ export default function Home() {
               alt="WhatsApp"
               width={iconSize}
               height={iconSize}
-              className="px-2"
+              className="px-2 xs:px-1"
             />
           </a>
 
-          {/* Cart Icon with Circular Glass Background */}
-          <a href="/cart" className="relative flex-shrink-0">
-            <div className=" flex items-center justify-center bg-white bg-opacity-20 rounded-full backdrop-blur-md">
-              <Image
-                src="/cartflower.png"
-                alt="Cart"
-                width={cartIconSize}
-                height={cartIconSize}
-              />
-            </div>
-          </a>
+    
         </div>
       </nav>
 
@@ -100,24 +98,33 @@ export default function Home() {
 
         {/* Centering Wrapper */}
         <div className="flex flex-col items-center justify-center h-full">
+           {/* Start Order Button */}
+           <button
+                className="px-5 py-5 my-10 bg-green-500 text-white rounded-lg outline-white outline-4 outline-offset-2 shadow-[6px_6px_0_0_#A7D5EE] flex items-center space-x-2"
+                onClick={() => setIsModalOpen(true)}
+              >
+                <span>Start Order</span>
+                <div className="flex items-center justify-center bg-white bg-opacity-20 rounded-full backdrop-blur-md">
+                  <Image
+                    src="/cartflower.png"
+                    alt="Cart"
+                    width={cartIconSize}
+                    height={cartIconSize}
+                  />
+                </div>
+          </button>
+
           {/* Info */}
-          <div className="flex flex-col items-center justify-center pt-10">
+          <div className="flex flex-col items-center justify-center">
             <p className="text-lg">Delivery + Pickup in Bangkok :)</p>
             <p className="text-lg">จัดส่ง / รับสินค้าในกรุงเทพฯ</p>
           </div>
 
-              {/* Start Order Button */}
-              <button className="px-5 py-5 my-14 bg-pink-700 text-white rounded-lg outline-white outline-4 outline-offset-2">
-            Start Order 👍
-          </button>
+             
 
           {/* Product Groups */}
-          <div className="grid gap-5 py-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <ProductGroup title="Birthday" image="/pgbirthdaybw2.png" />
-            <ProductGroup title="Romance" image="/pgromancebw2.png" />
-            <ProductGroup title="Wedding" image="/weddingbw2.png" />
-            <ProductGroup title="Corporate" image="/pgcorporatebw2.png" />
-            <ProductGroup title="Colors" image="/colorsbw2.png" />
+          <div className="py-5 overflow-hidden">
+            <ProductCarousel />
           </div>
 
       
@@ -134,6 +141,12 @@ export default function Home() {
           Made with ❤️ in Bangkok
         </p>
       </footer>
+
+      {/* Start Order Modal */}
+      <StartOrderModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 }

@@ -99,6 +99,27 @@ footer.border-custom::after {
   /* Styles applied via Tailwind CSS classes */
 }
 
+/* Background Video Styles */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Use viewport height */
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1; /* Ensure the video stays behind other content */
+}
+
+.video-background video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Match the height of the container */
+  object-fit: cover; /* Ensure the video scales to cover the container */
+}
+
 /* Custom text stroke for titles */
 .stroke-text {
   color: #F3E6C6;
@@ -109,27 +130,10 @@ footer.border-custom::after {
      1px  1px 0 #304348;
 }
 
-/* Background Video Styles */
-.video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1; /* Place the video behind other content */
-}
-
-.video-background .video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 /* Content Overlay */
 .content {
   position: relative;
-  z-index: 1; /* Ensure content is above the video */
+  z-index: 1;
 }
 
 /* Remove existing background image if present */
@@ -170,3 +174,30 @@ svg {
 .close-button {
   // Existing styles (if any)
 } */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.carousel-slide-enter {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Optional: Add smooth transitions for the navigation dots */
+.carousel-dot {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Optional: Add hover effects for the arrow buttons */
+.carousel-arrow {
+  transition: all 0.3s ease-in-out;
+}
+
+.carousel-arrow:hover {
+  transform: scale(1.1);
+}

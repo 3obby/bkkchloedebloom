@@ -6,7 +6,11 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'xs': {'max': '400px'}, // Add custom breakpoint for extra small screens
+      },
+    },
   },
   variants: {
     extend: {
@@ -15,4 +19,9 @@ module.exports = {
     },
   },
   plugins: [],
+  safelist: [
+    {
+      pattern: /shadow-\[.*\]/, // Allows arbitrary shadow values
+    },
+  ],
 };

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 
-export default function ProductGroup({ title, image }) {
+export default function ProductGroup({ title, image, isActive, distance }) {
   const [showModal, setShowModal] = useState(false);
 
   const handleClick = () => {
@@ -63,22 +63,32 @@ export default function ProductGroup({ title, image }) {
   };
 
   return (
-    <div className="cursor-pointer">
-      <div className="relative" onClick={handleClick}>
-        {/* Background Image with increased opacity */}
+    <div 
+      className={`cursor-pointer p-2 pb-0 transition-all duration-500
+        ${isActive ? 'bg-white bg-opacity-20 backdrop-blur-md rounded-t-lg' : 'bg-transparent'}`}
+      onClick={handleClick}
+    >
+      {/* Title above image */}
+      <h2 className={`text-lg sm:text-xl md:text-2xl font-bold text-white text-center mb-4 transition-opacity duration-500
+        ${isActive ? 'opacity-100' : 'opacity-40'}`}>
+        {title}
+      </h2>
+
+      {/* Image */}
+      <div
+        className="relative transition-opacity duration-500"
+        style={{
+          opacity: Math.max(0.2, 1 - distance * 0.8),
+        }}
+      >
         <Image
           src={image}
           alt={title}
-          layout="responsive"
-          width={1}
-          height={1}
-          className="rounded-lg opacity-90 object-cover"
+          width={400}
+          height={400}
+          className="object-cover w-full h-auto"
+          priority
         />
-
-        {/* Text Content overlaid */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white">{title}</h2>
-        </div>
       </div>
 
       {/* Modal with glass-like background */}
@@ -97,7 +107,7 @@ export default function ProductGroup({ title, image }) {
             >
               ✖
             </button>
-            <h2 className="text-xl font-bold mb-4">{title}</h2>
+            <h2 className="text-xl font-bold my-4">{title}</h2>
             {/* Display parent photos */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {groupImages[title]?.map((imgSrc, index) => (
