@@ -1,15 +1,22 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function BackgroundVideo() {
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const videoElement = document.querySelector('.video');
     videoElement.oncanplaythrough = () => {
       setVideoLoaded(true);
     };
+  }, []);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.2;
+    }
   }, []);
 
   const videoBackground = true; // Temporary boolean to test SVG background visibility
@@ -105,6 +112,7 @@ export default function BackgroundVideo() {
       </div>
       {/* Video Element */}
       <video
+        ref={videoRef}
         autoPlay
         loop
         muted
@@ -122,7 +130,7 @@ export default function BackgroundVideo() {
           objectFit: 'cover'
         }}
       >
-        <source src="/bgflowers.mp4" type="video/mp4" />
+        <source src="/ab.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
