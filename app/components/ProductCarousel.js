@@ -8,11 +8,11 @@ export default function ProductCarousel() {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const products = [
-    { title: "Birthday", image: "/pgbirthdaybw2.png" },
-    { title: "Romance", image: "/pgromancebw2.png" },
-    { title: "Wedding", image: "/weddingbw2.png" },
     { title: "Corporate", image: "/pgcorporatebw2.png" },
-    { title: "Colors", image: "/colorsbw2.png" }
+    { title: "Birthday", image: "/pgbirthdaybw2.png" },
+    { title: "Colors", image: "/colorsbw2.png" },
+    { title: "Romance", image: "/pgromancebw2.png" },
+    { title: "Wedding", image: "/weddingbw2.png" }
   ];
 
   const handleNext = () => {
@@ -30,16 +30,16 @@ export default function ProductCarousel() {
   };
 
   return (
-    <div className="relative w-full max-w-xs mx-auto">
+    <div className="relative w-full max-w-md mx-auto bg-white bg-opacity-20 p-4 rounded-lg shadow-lg">
       {/* Flex Container for Carousel and Controls */}
       <div className="flex flex-col">
         {/* Carousel Container */}
         <div
-          className="relative overflow-hidden"
+          className="relative overflow-hidden max-w-full"
         >
           {/* Products Container */}
           <div
-            className="flex transition-transform duration-500 ease-in-out h-full"
+            className="flex transition-transform duration-500 ease-in-out h-full w-full"
             style={{
               transform: `translateX(-${currentIndex * 100}%)`,
             }}

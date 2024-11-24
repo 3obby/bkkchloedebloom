@@ -14,10 +14,10 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col mx-10">
+    <div className="min-h-screen flex flex-col mx-8">
 
       {/* Navigation Bar */}
-      <nav className="relative px-5 sm:px-10 py-5 flex items-center border-custom">
+      <nav className="relative px-4 sm:px-8 py-4 flex items-center border-custom">
         {/* Left and Right Borders */}
         <div className="border-left"></div>
         <div className="border-right"></div>
@@ -37,7 +37,7 @@ export default function Home() {
         <div className="flex-grow"></div>
 
         {/* Social Media Icons and Cart Icon */}
-        <div className="flex items-center space-x-1 xs:space-x-0">
+        <div className="flex items-center space-x-2 xs:space-x-1">
           {/* Line Link */}
           <a
             href="https://line.me/ti/p/your-line-id"
@@ -91,16 +91,24 @@ export default function Home() {
       </nav>
 
       {/* Body */}
-      <main className="relative flex-1 px-10 border-custom">
+      <main className="relative flex-1 px-8 border-custom">
         {/* Left and Right Borders */}
         <div className="border-left"></div>
         <div className="border-right"></div>
 
         {/* Centering Wrapper */}
-        <div className="flex flex-col items-center justify-center h-full">
-           {/* Start Order Button */}
+        <div className="flex flex-col items-center justify-center h-full py-8">
+
+   {/* Info */}
+   <div className="flex flex-col items-center justify-center bg-white bg-opacity-20 p-8 rounded-lg shadow-lg max-w-md mx-auto">
+   <p className="text-lg text-center font-light drop-shadow-sm bg-gradient-to-r from-[rgb(164,13,175)] to-[rgb(5,141,128)] text-transparent bg-clip-text">จัดส่ง / รับสินค้าในกรุงเทพฯ</p>
+
+            <p className="text-lg text-center font-light drop-shadow-sm bg-gradient-to-r from-[rgb(5,141,128)] to-[rgb(84,150,18)] text-transparent bg-clip-text">Delivery + Pickup in Bangkok</p>
+            <p>🌺🌷🪻🌸🌼🌹💐</p>
+
+                {/* Start Order Button */}
            <button
-                className="px-5 py-5 my-10 bg-green-500 text-white rounded-lg outline-white outline-4 outline-offset-2 shadow-[6px_6px_0_0_#A7D5EE] flex items-center space-x-2"
+                className="px-8 py-4 my-8 bg-green-500 text-white rounded-lg outline-white outline-4 outline-offset-2 shadow-[6px_6px_0_0_#A7D5EE] flex items-center space-x-2"
                 onClick={() => setIsModalOpen(true)}
               >
                 <span>Start Order</span>
@@ -113,17 +121,14 @@ export default function Home() {
                   />
                 </div>
           </button>
-
-          {/* Info */}
-          <div className="flex flex-col items-center justify-center">
-            <p className="text-lg">Delivery + Pickup in Bangkok :)</p>
-            <p className="text-lg">จัดส่ง / รับสินค้าในกรุงเทพฯ</p>
           </div>
+
+      
 
              
 
           {/* Product Groups */}
-          <div className="py-5 overflow-hidden">
+          <div className="py-8 w-full max-w-md mx-auto">
             <ProductCarousel />
           </div>
 
@@ -132,7 +137,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="relative h-20 border-custom flex items-center justify-center">
+      <footer className="relative h-16 border-custom flex items-center justify-center">
         {/* Left and Right Borders */}
         <div className="border-left"></div>
         <div className="border-right"></div>
@@ -146,6 +151,7 @@ export default function Home() {
       <StartOrderModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        className="relative w-full max-w-xs mx-auto bg-white bg-opacity-20 p-4 rounded-lg shadow-lg"
       />
     </div>
   );
