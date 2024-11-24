@@ -2,10 +2,12 @@
 
 import React, { useState } from 'react';
 import ProductGroup from './ProductGroup';
+import StartOrderModal from './StartOrderModal';
 
 export default function ProductCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const products = [
     { title: "Corporate", image: "/pgcorporatebw2.png" },
@@ -54,6 +56,7 @@ export default function ProductCarousel() {
                   image={product.image}
                   isActive={index === currentIndex}
                   distance={Math.abs(currentIndex - index)}
+                  onImageClick={() => setIsModalOpen(true)}
                 />
               </div>
             ))}
@@ -103,6 +106,12 @@ export default function ProductCarousel() {
           </div>
         </div>
       </div>
+
+      {/* Start Order Modal */}
+      <StartOrderModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
-} 
+}

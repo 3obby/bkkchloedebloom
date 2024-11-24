@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Image from "next/image";
 import ProductCarousel from './components/ProductCarousel';
 import StartOrderModal from './components/StartOrderModal';
+import BackgroundVideo from './components/BackgroundVideo';
+import RotatingText from './components/RotatingText';
 
 export default function Home() {
   // Define icon sizes outside of the return statement
@@ -100,11 +102,18 @@ export default function Home() {
         <div className="flex flex-col items-center justify-center h-full py-8">
 
    {/* Info */}
-   <div className="flex flex-col items-center justify-center bg-white bg-opacity-20 p-8 rounded-lg shadow-lg max-w-md mx-auto">
-   <p className="text-lg text-center font-light drop-shadow-sm bg-gradient-to-r from-[rgb(164,13,175)] to-[rgb(5,141,128)] text-transparent bg-clip-text">จัดส่ง / รับสินค้าในกรุงเทพฯ</p>
-
-            <p className="text-lg text-center font-light drop-shadow-sm bg-gradient-to-r from-[rgb(5,141,128)] to-[rgb(84,150,18)] text-transparent bg-clip-text">Delivery + Pickup in Bangkok</p>
-            <p>🌺🌷🪻🌸🌼🌹💐</p>
+   <div className="w-full max-w-md mx-auto flex flex-col items-center justify-center bg-white bg-opacity-20 p-8 rounded-lg shadow-lg space-y-4">
+     <RotatingText 
+       translations={[
+         "Delivery + Pickup in Bangkok",
+         "จัดส่ง / รับสินค้าในกรุงเทพฯ",
+         "曼谷送货和自取",
+         "バンコクでの配達と受け取り",
+         "방콕 배달 및 픽업"
+       ]}
+       className="text-lg text-center font-light bg-gradient-to-r from-[rgb(5,141,128)] to-[rgb(84,150,18)] bg-clip-text text-transparent w-full"
+     />
+     <p>🌺🌷🪻🌸🌼🌹💐</p>
 
                 {/* Start Order Button */}
            <button
