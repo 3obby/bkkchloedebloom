@@ -99,40 +99,43 @@ export default function Home() {
 
         {/* Main Content */}
         <div className="relative min-h-screen flex flex-col items-center pt-16 z-10">
-          {/* Info */}
-          <div className="w-full flex flex-col items-center bg-white bg-opacity-20 backdrop-blur-md p-8 rounded-lg shadow-lg space-y-4">
-            <RotatingText 
-              translations={[
-                "Delivery + Pickup in Bangkok",
-                "จัดส่ง / รับสินค้าในกรุงเทพฯ",
-                "曼谷送货和自取",
-                "バンコクでの配達と受け取り",
-                "방콕 배달 및 픽업"
-              ]}
-              className="text-lg text-center font-light text-black w-full"
-            />
-            <p>🌺🌷🪻🌸🌼🌹💐</p>
+          {/* Content Container with Max Width */}
+          <div className="w-full max-w-[600px] mx-auto px-4">
+            {/* Info */}
+            <div className="w-full flex flex-col items-center bg-white bg-opacity-20 backdrop-blur-md p-8 rounded-lg shadow-lg space-y-4">
+              <RotatingText 
+                translations={[
+                  "Delivery + Pickup in Bangkok",
+                  "จัดส่ง / รับสินค้าในกรุงเทพฯ",
+                  "曼谷送货和自取",
+                  "バンコクでの配達と受け取り",
+                  "방콕 배달 및 픽업"
+                ]}
+                className="text-lg text-center font-light text-black w-full"
+              />
+              <p>🌺🌷🪻🌸🌼🌹💐</p>
 
-            {/* Start Order Button */}
-            <button
-              className="px-8 py-4 my-8 bg-green-500 text-white rounded-lg outline-white outline-4 outline-offset-2 shadow-[6px_6px_0_0_#A7D5EE] flex items-center space-x-2"
-              onClick={() => setIsModalOpen(true)}
-            >
-              <span>Start Order</span>
-              <div className="flex items-center justify-center bg-white bg-opacity-20 rounded-full backdrop-blur-md">
-                <Image
-                  src="/cartflower.png"
-                  alt="Cart"
-                  width={cartIconSize}
-                  height={cartIconSize}
-                />
-              </div>
-            </button>
-          </div>
+              {/* Start Order Button */}
+              <button
+                className="px-8 py-4 my-8 bg-green-500 text-white rounded-lg outline-white outline-4 outline-offset-2 shadow-[6px_6px_0_0_#A7D5EE] flex items-center space-x-2"
+                onClick={() => setIsModalOpen(true)}
+              >
+                <span>Start Order</span>
+                <div className="flex items-center justify-center bg-white bg-opacity-20 rounded-full backdrop-blur-md">
+                  <Image
+                    src="/cartflower.png"
+                    alt="Cart"
+                    width={cartIconSize}
+                    height={cartIconSize}
+                  />
+                </div>
+              </button>
+            </div>
 
-          {/* Product Groups */}
-          <div className="py-8 w-full">
-            <ProductCarousel />
+            {/* Product Groups */}
+            <div className="py-8 w-full">
+              <ProductCarousel />
+            </div>
           </div>
         </div>
       </main>
