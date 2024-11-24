@@ -122,7 +122,7 @@ export default function BackgroundVideo() {
           objectFit: 'cover'
         }}
       >
-        <source src="/bgscene.mp4" type="video/mp4" />
+        <source src="/bgflowers.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>

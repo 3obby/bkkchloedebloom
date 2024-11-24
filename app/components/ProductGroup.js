@@ -44,32 +44,39 @@ export default function ProductGroup({ title, image, isActive, distance, onImage
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center p-2">
-      {/* Image */}
-      <div 
-        className={`relative w-full aspect-square cursor-pointer transition-all duration-500 ${
-          isActive ? 'scale-100 opacity-100' : 'scale-95 opacity-50'
-        }`}
-        onClick={onImageClick}
-      >
-        <Image
-          src={image}
-          alt={title}
-          fill
-          style={{ objectFit: 'cover' }}
-          className="rounded-lg"
-        />
-      </div>
-
+    <div className="w-full flex flex-col">
       {/* Title with Translations */}
-      <div className={`my-4 text-center transition-all duration-500 ${
+      <div className={`text-center transition-all duration-500 py-6 ${
         isActive ? 'opacity-100' : 'opacity-0'
       }`}>
         {translations[title]?.map((translation, index) => (
-          <p key={index} className="text-sm">
+          <p key={index} className="text-sm leading-relaxed text-black">
             {translation.text}
           </p>
         ))}
+      </div>
+
+      {/* Image Container */}
+      <div className="w-full relative rounded-b-lg overflow-hidden">
+        <div 
+          className={`relative w-full aspect-[3/2] cursor-pointer transition-all duration-500 ${
+            isActive ? 'scale-100 opacity-100' : 'scale-95 opacity-50'
+          }`}
+          onClick={onImageClick}
+        >
+          <Image
+            src={image}
+            alt={title}
+            fill
+            priority
+            sizes="100vw"
+            style={{ 
+              objectFit: 'contain',
+              objectPosition: 'center'
+            }}
+            className="rounded-b-lg"
+          />
+        </div>
       </div>
     </div>
   );

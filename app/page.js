@@ -42,7 +42,7 @@ export default function Home() {
         <div className="flex items-center space-x-2 xs:space-x-1">
           {/* Line Link */}
           <a
-            href="https://line.me/ti/p/your-line-id"
+            href="https://lin.ee/do1AZPx"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-shrink-0"
@@ -58,7 +58,7 @@ export default function Home() {
 
           {/* Instagram Link */}
           <a
-            href="https://instagram.com/your-instagram-username"
+            href="https://www.instagram.com/chloe_de_bloom/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-shrink-0"
@@ -74,7 +74,7 @@ export default function Home() {
 
           {/* WhatsApp Link */}
           <a
-            href="https://wa.me/your-whatsapp-number"
+            href="https://wa.me/66991786326"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-shrink-0"
@@ -93,55 +93,47 @@ export default function Home() {
       </nav>
 
       {/* Body */}
-      <main className="relative flex-1 px-8 border-custom">
-        {/* Left and Right Borders */}
-        <div className="border-left"></div>
-        <div className="border-right"></div>
-
-        {/* Centering Wrapper */}
-        <div className="flex flex-col items-center justify-center h-full py-8">
-
-   {/* Info */}
-   <div className="w-full max-w-md mx-auto flex flex-col items-center justify-center bg-white bg-opacity-20 p-8 rounded-lg shadow-lg space-y-4">
-     <RotatingText 
-       translations={[
-         "Delivery + Pickup in Bangkok",
-         "จัดส่ง / รับสินค้าในกรุงเทพฯ",
-         "曼谷送货和自取",
-         "バンコクでの配達と受け取り",
-         "방콕 배달 및 픽업"
-       ]}
-       className="text-lg text-center font-light bg-gradient-to-r from-[rgb(5,141,128)] to-[rgb(84,150,18)] bg-clip-text text-transparent w-full"
-     />
-     <p>🌺🌷🪻🌸🌼🌹💐</p>
-
-                {/* Start Order Button */}
-           <button
-                className="px-8 py-4 my-8 bg-green-500 text-white rounded-lg outline-white outline-4 outline-offset-2 shadow-[6px_6px_0_0_#A7D5EE] flex items-center space-x-2"
-                onClick={() => setIsModalOpen(true)}
-              >
-                <span>Start Order</span>
-                <div className="flex items-center justify-center bg-white bg-opacity-20 rounded-full backdrop-blur-md">
-                  <Image
-                    src="/cartflower.png"
-                    alt="Cart"
-                    width={cartIconSize}
-                    height={cartIconSize}
-                  />
-                </div>
-          </button>
-          </div>
-
+      <main className="min-h-screen w-full relative overflow-hidden">
+        <BackgroundVideo />
       
 
-             
+        {/* Main Content */}
+        <div className="relative min-h-screen flex flex-col items-center pt-16 z-10">
+          {/* Info */}
+          <div className="w-full flex flex-col items-center bg-white bg-opacity-20 backdrop-blur-md p-8 rounded-lg shadow-lg space-y-4">
+            <RotatingText 
+              translations={[
+                "Delivery + Pickup in Bangkok",
+                "จัดส่ง / รับสินค้าในกรุงเทพฯ",
+                "曼谷送货和自取",
+                "バンコクでの配達と受け取り",
+                "방콕 배달 및 픽업"
+              ]}
+              className="text-lg text-center font-light text-black w-full"
+            />
+            <p>🌺🌷🪻🌸🌼🌹💐</p>
+
+            {/* Start Order Button */}
+            <button
+              className="px-8 py-4 my-8 bg-green-500 text-white rounded-lg outline-white outline-4 outline-offset-2 shadow-[6px_6px_0_0_#A7D5EE] flex items-center space-x-2"
+              onClick={() => setIsModalOpen(true)}
+            >
+              <span>Start Order</span>
+              <div className="flex items-center justify-center bg-white bg-opacity-20 rounded-full backdrop-blur-md">
+                <Image
+                  src="/cartflower.png"
+                  alt="Cart"
+                  width={cartIconSize}
+                  height={cartIconSize}
+                />
+              </div>
+            </button>
+          </div>
 
           {/* Product Groups */}
-          <div className="py-8 w-full max-w-md mx-auto">
+          <div className="py-8 w-full">
             <ProductCarousel />
           </div>
-
-      
         </div>
       </main>
 
