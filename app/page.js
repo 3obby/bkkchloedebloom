@@ -19,7 +19,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col mx-8">
 
       {/* Navigation Bar */}
-      <nav className="relative px-4 sm:px-8 py-4 flex items-center border-custom">
+      <nav className="relative px-4 sm:px-8 py-4 flex items-center border-custom bg-white bg-opacity-20 backdrop-blur-md">
         {/* Left and Right Borders */}
         <div className="border-left"></div>
         <div className="border-right"></div>

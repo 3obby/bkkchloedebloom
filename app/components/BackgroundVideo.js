@@ -7,22 +7,18 @@ export default function BackgroundVideo() {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    const videoElement = document.querySelector('.video');
-    videoElement.oncanplaythrough = () => {
-      setVideoLoaded(true);
-    };
-  }, []);
-
-  useEffect(() => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 0.2;
+      videoRef.current.oncanplaythrough = () => {
+        setVideoLoaded(true);
+      };
     }
   }, []);
 
   const videoBackground = true; // Temporary boolean to test SVG background visibility
 
   return (
-    <div className="video-background" style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1, overflow: 'hidden' }}>
+    <div className="fixed inset-0 w-full h-full -z-10 overflow-hidden">
       {/* SVG Polygon Placeholder */}
       <div className={`svg-placeholder ${videoLoaded || videoBackground ? 'hidden' : 'visible'}`}>
         <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}>
@@ -117,18 +113,7 @@ export default function BackgroundVideo() {
         loop
         muted
         playsInline
-        className="video"
-        style={{ 
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          minWidth: '100%',
-          minHeight: '100%',
-          width: 'auto',
-          height: 'auto',
-          transform: 'translate(-50%, -50%)',
-          objectFit: 'cover'
-        }}
+        className="absolute w-full h-full object-cover"
       >
         <source src="/ab.mp4" type="video/mp4" />
         Your browser does not support the video tag.
